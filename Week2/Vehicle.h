@@ -10,16 +10,16 @@ private:
     int doors;
 
 public:
-    // Constructors
-    Vehicle() : wheels(0), doors(0) {}
-    Vehicle(int wheels, int doors) : wheels(wheels), doors(doors) {}
+    Vehicle();
+    Vehicle(int wheels, int doors);
 
-    // Copy Constructors
-    Vehicle(const Vehicle& copy) : Vehicle(copy.wheels, copy.doors) {}
-    Vehicle(const Vehicle* copy) : Vehicle(*copy) {}
+    Vehicle(Vehicle& );
+    Vehicle(Vehicle* );
 
-    // Print function
-    void printVehicle() const {
-        std::cout << "Wheels: " << wheels << ", Doors: " << doors << std::endl;
-    }
+    int getWheels();
+    void setWheels(int wheels);
+    int getDoors();
+    void setDoors(int doors);
+
+    void printVehicle();
 };
