@@ -11,7 +11,6 @@ private:
 
 public:
     Vehicle();
-    Vehicle(int wheels, int doors);
 
     Vehicle(Vehicle& );
     Vehicle(Vehicle* );

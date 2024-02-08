@@ -3,39 +3,8 @@
 
 #include "Vehicle.h"
 
-Vehicle::Vehicle() : wheels(0), doors(0) {}
 
-void Vehicle::printVehicle(){ 
-    std::cout << "Wheels:" << wheels << " Doors:" << doors << std::endl; 
-}
-
-// Constructors
-Vehicle::Vehicle(int wheels, int doors) : wheels(wheels), doors(doors) {}
-Vehicle::Vehicle(Vehicle& copy) : wheels(copy.wheels), doors(copy.doors) {}
-Vehicle::Vehicle(Vehicle* copy) : Vehicle(*copy) {}
-
-void CreateVehicle(Vehicle& v, int w = 4, int d = 2);
-
-int Vehicle::getWheels() {
-    return wheels;
-}
-
-void Vehicle::setWheels(int wheels) {
-    this->wheels = wheels;
-}
-
-int Vehicle::getDoors() {
-    return doors;
-}
-
-void Vehicle::setDoors(int doors) {
-    this->doors = doors;
-}
-
-void CreateVehicle(Vehicle& v, int w, int d) {
-    v.setWheels(w);
-    v.setDoors(d);
-}
+void CreateVehicle(Vehicle& v, int w=4, int d=2);
 
 int main(int argc, char **argv) {
 

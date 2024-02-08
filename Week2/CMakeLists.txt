@@ -3,7 +3,7 @@
 #
 
 # Add source to this project's executable.
-add_executable (JeanLuc_Lab2 "Week2.cpp" "Vehicle.h")
+add_executable (JeanLuc_Lab2 "Week2.cpp" "Vehicle.h" "Vehicle.cpp")
 
 
 # TODO: Add tests and install targets if needed.
