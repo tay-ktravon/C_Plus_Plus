@@ -10,9 +10,12 @@ int main(int argc, char **argv)
 {
     Vehicle original;
     Vehicle copy(original); // copy constructor by reference
+
     std::cout << "Original is: " << original << " copy is: " << copy << std::endl;
+    
     std::cout << "Increment original: " << original++ << std::endl;
     std::cout << "Increment copy:" << ++copy << std::endl;
+    
     std::cout << "Decrement original:" << --original << std::endl;
     std::cout << "Decrement copy:" << copy-- << std::endl;
 

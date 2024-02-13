@@ -27,11 +27,11 @@ public:
     bool operator==(const Vehicle& other) const;
     bool operator!=(const Vehicle& other) const;
 
-    Vehicle& operator++();       // Prefix increment
-    Vehicle operator++(int);    // Postfix increment
-    Vehicle& operator--();       // Prefix decrement
-    Vehicle operator--(int);    // Postfix decrement
-
+    Vehicle& operator++();          // Prefix increment
+    Vehicle operator++(int);        // Postfix increment
+    Vehicle& operator--();          // Prefix decrement
+    Vehicle operator--(int);        // Postfix decrement
+       
     friend std::ostream& operator<<(std::ostream& os, const Vehicle& v);
 
 };
