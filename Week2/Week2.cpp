@@ -1,34 +1,28 @@
-﻿// Week2.cpp : Include file for standard system include files,
+﻿
+// Week2.cpp : Include file for standard system include files,
 // or project specific include files.
 
 #include "Vehicle.h"
+#include "ElectricVehicle.h"
+#include "HybridVehicle.h"
+#include "GasolineVehicle.h"
 
 
-void CreateVehicle(Vehicle& v, int w=4, int d=2);
-
-int main(int argc, char **argv) 
+Vehicle* testVehicle(Vehicle* pVehicle, const char* vehicleName)
 {
-    Vehicle original;
-    Vehicle copy(original); // copy constructor by reference
-
-    std::cout << "Original is: " << original << " copy is: " << copy << std::endl;
-    
-    std::cout << "Increment original: " << original++ << std::endl;
-    std::cout << "Increment copy:" << ++copy << std::endl;
-    
-    std::cout << "Decrement original:" << --original << std::endl;
-    std::cout << "Decrement copy:" << copy-- << std::endl;
-
-    // should be true :
-    std::cout << "Compare equality 1: " << (original == copy) << std::endl;
-    
-    // should be false:
-    std::cout << "Compare equality 2: " << (--original == ++copy) << std::endl;
-    
-    // should be true:
-    std::cout << "Compare inequality: " << (original != copy) << std::endl;
-    
-    // This should make original = copy, and then return a Vehicle for output:
-    std::cout << "Assignment operator: " << (original = copy) << std::endl;
-    return 0;
+	std::cout << vehicleName << "’s range is: " << pVehicle->calculateRange() << std::endl;
+	pVehicle->drive(150); //drive 150 km
+	std::cout << vehicleName << "’s energy left is: " << pVehicle->percentEnergyRemaining() << std::endl;
+	std::cout << vehicleName << "’s range is now: " << pVehicle->calculateRange() << std::endl;
+	return pVehicle;
+}
+int main(int argc, char** argv)
+{
+	//50L of gas, 7.1 L/100km
+	delete testVehicle(new GasolineVehicle(50, 7.1), "Corolla");
+	//42 L of gas, 4.3 L/100km, 8.8kWh, 22 kWh/100km
+	delete testVehicle(new HybridVehicle(42, 4.3, 8.8, 22.0), "Prius");
+	//75 kWh, 16 kWh/100km
+	delete testVehicle(new ElectricVehicle(75, 16), "Tesla 3");
+	return 0;
 }
