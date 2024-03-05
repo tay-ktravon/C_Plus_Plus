@@ -1,30 +1,23 @@
 
-#pragma once
 #include "HybridVehicle.h"
-#include "GasolineVehicle.h"
-#include "ElectricVehicle.h"
-
-HybridVehicle::HybridVehicle(float maximumGasoline, float currentGasoline, float maximumCharge, float currentCharge)
-    : GasolineVehicle(maximumGasoline, currentGasoline), ElectricVehicle(maximumCharge, currentCharge) {}
-
-HybridVehicle::~HybridVehicle() {
-    std::cout << "In Hybrid Vehicle Destructor" << std::endl;
-}
-
-float HybridVehicle::calculateRange() {
-    return (GasolineVehicle::calculateRange() + ElectricVehicle::calculateRange()) / 2.0f;
-}
-
-float HybridVehicle::percentEnergyRemaining() {
-    return (GasolineVehicle::percentEnergyRemaining() + ElectricVehicle::percentEnergyRemaining()) / 2.0f;
-}
+#include <iostream>
 
 void HybridVehicle::drive(float km) {
-    if (currentCharge > 0) {
-        ElectricVehicle::drive(km);
-        std::cout << "Your car is out of energy!" << std::endl;
+    // First, try to drive using electric charge
+    float kmCanDriveElectric = electricPart.calculateRange();
+    if (km <= kmCanDriveElectric) {
+        electricPart.drive(km); // If the trip can be completed on electric power alone
+        return;
     }
     else {
-        GasolineVehicle::drive(km);
+        electricPart.drive(kmCanDriveElectric); // Use all electric charge first
+    }
+
+    // Calculate remaining distance after using electric charge
+    float remainingKm = km - kmCanDriveElectric;
+    gasolinePart.drive(remainingKm); // Use gasoline for the rest of the trip
+
+    if (remainingKm > gasolinePart.calculateRange()) {
+        std::cout << "Your hybrid car is out of energy!" << std::endl;
     }
 }

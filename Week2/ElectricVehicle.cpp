@@ -5,26 +5,11 @@
 #include "ElectricVehicle.h"
 #include <iostream>
 
-ElectricVehicle::ElectricVehicle(float maxCharge, float efficiency)
-    : maximumCharge(maxCharge), currentCharge(maxCharge) {
-    engineEfficiency = efficiency;
-}
-
-ElectricVehicle::~ElectricVehicle() {
-    std::cout << "In Electric Vehicle Destructor" << std::endl;
-}
-
-float ElectricVehicle::calculateRange() {
-    return (currentCharge / maximumCharge) * 100.0f / engineEfficiency;
-}
-
-float ElectricVehicle::percentEnergyRemaining() {
-    return (currentCharge / maximumCharge) * 100.0f;
-}
-
 void ElectricVehicle::drive(float km) {
-    float energyConsumption = (km / 100) * engineEfficiency;
-    currentCharge -= energyConsumption;
-    if (currentCharge < 0)
-        std::cout << "Your car is out of energy!" << std::endl;
+    float requiredCharge = (km / 100) * engineEfficiency;
+    currentCharge -= requiredCharge;
+    if (currentCharge < 0) {
+        std::cout << "Your car is out of charge!" << std::endl;
+        currentCharge = 0; // Prevent negative charge levels
+    }
 }

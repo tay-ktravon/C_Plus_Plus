@@ -7,22 +7,23 @@
 #include "HybridVehicle.h"
 #include "GasolineVehicle.h"
 
+/*
+    Vehicle::Vehicle(int w, int d) : numWheels(w), numDoors(d) {
+        cout << "In constructor with 2 parameters" << endl;
+    }
 
-Vehicle* testVehicle(Vehicle* pVehicle, const char* vehicleName)
-{
-	std::cout << vehicleName << "’s range is: " << pVehicle->calculateRange() << std::endl;
-	pVehicle->drive(150); //drive 150 km
-	std::cout << vehicleName << "’s energy left is: " << pVehicle->percentEnergyRemaining() << std::endl;
-	std::cout << vehicleName << "’s range is now: " << pVehicle->calculateRange() << std::endl;
-	return pVehicle;
-}
-int main(int argc, char** argv)
-{
-	//50L of gas, 7.1 L/100km
-	delete testVehicle(new GasolineVehicle(50, 7.1), "Corolla");
-	//42 L of gas, 4.3 L/100km, 8.8kWh, 22 kWh/100km
-	delete testVehicle(new HybridVehicle(42, 4.3, 8.8, 22.0), "Prius");
-	//75 kWh, 16 kWh/100km
-	delete testVehicle(new ElectricVehicle(75, 16), "Tesla 3");
-	return 0;
-}
+    Vehicle::Vehicle(int w) : Vehicle(w, 4) {
+        cout << "In constructor with 1 parameter, wheels=" << w << endl;
+    }
+
+    Vehicle::Vehicle() : Vehicle(4) {
+        cout << "In Constructor with 0 parameters" << endl;
+    }
+    void Vehicle::printVehicle() const {
+        std::cout << "Wheels:" << numWheels << " Doors:" << numDoors << std::endl;
+    }
+/**
+    Vehicle::~Vehicle() {
+        cout << "In destructor" << endl;
+    }
+*/
