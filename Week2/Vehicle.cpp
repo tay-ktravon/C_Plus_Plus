@@ -8,26 +8,6 @@
 #include "HybridVehicle.h"
 using namespace std;
 
-//Vehicle::Vehicle(Vehicle& copy) : numWheels(copy.numWheels), numDoors(copy.numDoors), engineEfficiency(copy.engineEfficiency) {
-
-    //cout << "Copy constructor (reference) called" << endl;
-//}
-//Vehicle::Vehicle(Vehicle* copy) : Vehicle(*copy) {
-    //cout << "Copy constructor (pointer) called" << endl;
-//}
-//void Vehicle::setNumWheels(int w) {
-//    numWheels = w;
-//}
-
-//void Vehicle::setNumDoors(int d) {
-//    numDoors = d;
-//}
-
-//void CreateVehicle(Vehicle& v, int w, int d) {
-//    v.setNumWheels(w);
-//    v.setNumDoors(d);
-//}
-
 Vehicle* testVehicle(Vehicle* pVehicle, const char* vehicleName)
 {
     cout << vehicleName << "'s range is: " << pVehicle->calculateRange() << endl;

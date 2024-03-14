@@ -5,6 +5,7 @@
 #define GASOLINEVEHICLE_H
 #include"Vehicle.h"
 #include<iostream>
+
 class GasolineVehicle : public Vehicle {
 protected:
     float currentGasoline;
